@@ -8,6 +8,7 @@
         font-family: Young-serif, Arial, sans-serif;
         box-sizing: border-box;
         font-size: 1rem;
+        font-weight: 600;
       }
       body {
         font-family: Young-serif, Arial, sans-serif;
@@ -16,16 +17,22 @@
         padding-top: 10px;
         height: 100vh;
         overflow: hidden;
-        background-color: red;
+        background-color: rgb(103, 58, 183);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
       }
       .select-container {
+        width: 100%;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
+      }
+      .box {
+        width: 20px;
+        height: 20px;
+        background-color: black;
       }
       select {
         -webkit-appearance: none;
@@ -35,7 +42,7 @@
         outline: 0;
         box-shadow: none;
         border: 2px solid #2b2e2e;
-        background: red;
+        background: rgb(103, 58, 183);
         background-image: none;
         flex: 1;
         padding: 0 0.5em;
@@ -69,7 +76,7 @@
         transition: 0.25s all ease;
       }
       .select:hover::after {
-        color: #23b499;
+        color: rgb(103, 58, 183);
       }
       .select option {
         color: #2b2e2e; /* Add padding between the text and dropdown border */
@@ -106,6 +113,7 @@
   </head>
   <body>
     <div class="select-container">
+      <div class="box"></div>
       <div class="select">
         <select id="categorySelect" onchange="loadSheetData(this.value)">
           <option value="" disabled selected>Select a category</option>
@@ -121,6 +129,7 @@
           <option value="TIPS">TIPS</option>
         </select>
       </div>
+      <div class="box"></div>
     </div>
 
     <div class="questions" id="questionContainer">
@@ -152,43 +161,43 @@
         switch (category) {
           case "REACT":
             url =
-              "https://script.google.com/macros/s/AKfycbwAe5Wq-IPvUCCjwSx3c3qkrvUvqhblegENoKgT-1xj5QtVtOiJrjOq6za4v_fdpqTy/exec";
-            break;
-          case "HTML":
-            url =
-              "https://script.google.com/macros/s/AKfycby165c8KLRmB-1GFKfH3JkNgrxakgmN_6bUgCoN1WaPH76Qp3FSCa1wxxSf_chLNh_p/exec";
+              "https://docs.google.com/forms/d/e/1FAIpQLSdWHzRxzD_K1YnxFbyaSIKbiYBNBP2fDIz5HWLSWajcBeb-KA/viewform?usp=sf_link";
             break;
           case "HR":
             url =
-              "https://script.google.com/macros/s/AKfycbzY3FYp1Ue02oPIzOwYpPZM6cwzJfWI1hUQlLINki3eYZsdLITNkdlNZn9-O1JxYDEU/exec";
-            break;
-          case "JS":
-            url =
-              "https://script.google.com/macros/s/AKfycbxERO3GLaCJs1ejMcvQcu5vfVoybSjvBZUOU8Ay5op5IwCkCX4yaXpZtUFKj4ryllsB/exec";
+              "https://docs.google.com/forms/d/e/1FAIpQLScIUHnqkev55J6MRkk6OZmmWh8SDR688yXSQizmiHHuvPjuUA/viewform?usp=sf_link";
             break;
           case "PYTHON":
             url =
-              "https://script.google.com/macros/s/AKfycbzJCjLwDh-s5hy5TYwu6DzsBDal-p8AQUfNucojeLeih00BPV-9OKuRDNKD71uCD0RDNg/exec";
+              "https://docs.google.com/forms/d/e/1FAIpQLSfuBwRjWTIm387aTTyFEmcfzQkmMtqiW1QfwwLr8XhRYG1iGg/viewform?usp=sf_link";
+            break;
+          case "JS":
+            url =
+              "https://docs.google.com/forms/d/e/1FAIpQLSeUPyURbkwWbmDVJwfJnTRJvNt3e8tlZx0r0Tx0EZHs9RDf1g/viewform?usp=sf_link";
+            break;
+          case "HTML":
+            url =
+              "https://docs.google.com/forms/d/e/1FAIpQLSe-VSazw0jPsJ_eTJdfqiI60csdG2qGtZOfaxpVbPtBUNjlvw/viewform?usp=sf_link";
             break;
           case "DBMS":
             url =
-              "https://script.google.com/macros/s/AKfycbxl3X1EYHtbHkhT5CXb4AVkrXFYsaTtfz1mGawK0K-PtET0BlQela0RVpXIZYlhWKyw/exec";
+              "https://docs.google.com/forms/d/e/1FAIpQLSerqU6Ti3GWtvANUpNw5d4Em5_VlXvIsF0L9lDuK3U0nIpzzw/viewform?usp=sf_link";
             break;
           case "SQL":
             url =
-              "https://script.google.com/macros/s/AKfycbzhfh-Gg88TtloGKH2jpZ18hOxJIqGFVFXRgVNJ5-M2cHyhb7QLK7Inkz-5pWcNTWE/exec";
+              "https://docs.google.com/forms/d/e/1FAIpQLSdMbXOhV1Sr8CMv_rANHBRovPqN-v9h5vWJOwzh7yaP7xlwdw/viewform?usp=sf_link";
             break;
           case "OOPS":
             url =
-              "https://script.google.com/macros/s/AKfycbych_rqPZQRrmPGvWXvHaGoWjgzNvdUPtasitSzswLWQhZqj7lY9b746i1hnxYRXZhNnQ/exec";
+              "https://docs.google.com/forms/d/e/1FAIpQLSdVITLwwLhsVeTJSqo4-AhYl6KmyWjtJmWHUQG8pDj0s0PR2A/viewform?usp=sf_link";
             break;
           case "C":
             url =
-              "https://script.google.com/macros/s/AKfycbw326HKm7qUUb2tSC4NHC2WPf_Y8FnLqphXq6OoRq_ZLqeL2w6QJTdEsVVSrJQbXLY_BQ/exec";
+              "https://docs.google.com/forms/d/e/1FAIpQLSe0_dMErRLnTrXeRGEp59lj-kgb4eXGE-Bm3nNFJR-2sW1dQw/viewform?usp=sf_link";
             break;
           case "TIPS":
             url =
-              "https://script.google.com/macros/s/AKfycbxtEkiwxfEbmA81gUo462y8DYa7wX84hTTOzo7jytevU1ZYOvVJ2-M20I9XNd9rcp8Z/exec";
+              "https://docs.google.com/forms/d/e/1FAIpQLSeeBR2eqFOX5tht5So8e2TatejQincBL1uNvOm7VJVIchXnow/viewform?usp=sf_link";
             break;
           default:
             break;
