@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* Responsive styles */
+      * {
+        font-family: Young-serif, Arial, sans-serif;
+        box-sizing: border-box;
+        font-size: 1rem;
+      }
+      body {
+        font-family: Young-serif, Arial, sans-serif;
+        width: 100%;
+        margin: 0;
+        padding-top: 10px;
+        height: 100vh;
+        overflow: hidden;
+        background-color: red;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .select-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+        outline: 0;
+        box-shadow: none;
+        border: 2px solid #2b2e2e;
+        background: red;
+        background-image: none;
+        flex: 1;
+        padding: 0 0.5em;
+        color: #2b2e2e;
+        cursor: pointer;
+        font-size: 1em;
+        font-family: "Open Sans", sans-serif;
+      }
+      select::-ms-expand {
+        display: none;
+      }
+      .select {
+        position: relative;
+        display: flex;
+        width: 20em;
+        height: 3em;
+        line-height: 3;
+        background: #5c6664;
+        overflow: hidden;
+        border-radius: 0.25em;
+      }
+      .select::after {
+        content: "\25BC";
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0 1em;
+        background: #2b2e2e;
+        cursor: pointer;
+        pointer-events: none;
+        transition: 0.25s all ease;
+      }
+      .select:hover::after {
+        color: #23b499;
+      }
+      .select option {
+        color: #2b2e2e; /* Add padding between the text and dropdown border */
+      }
+
+      select option:checked {
+        background-color: #5c6664; /* Change the background color to your desired color */
+        color: #fff; /* Change the text color to your desired color */
+      }
+
+      .iframe-container {
+        margin-top: 20px;
+        overflow: hidden;
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio (change as needed) */
+      }
+      .iframe-container iframe {
+        border: 0;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 100%;
+      }
+      footer {
+        width: 100%;
+        height: 100px;
+        font-size: 0.9rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="select-container">
+      <div class="select">
+        <select id="categorySelect" onchange="loadSheetData(this.value)">
+          <option value="" disabled selected>Select a category</option>
+          <option value="REACT">REACT</option>
+          <option value="HTML">HTML</option>
+          <option value="HR">HR</option>
+          <option value="JS">JS</option>
+          <option value="PYTHON">PYTHON</option>
+          <option value="DBMS">DBMS</option>
+          <option value="SQL">SQL</option>
+          <option value="OOPS">OOPS</option>
+          <option value="C">C</option>
+          <option value="TIPS">TIPS</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="questions" id="questionContainer">
+      <!-- Questions will be dynamically added here -->
+    </div>
+    <script>
+      // Function to load the Google Sheet data into an iframe
+      function loadSheetData(category) {
+        var questionContainer = document.getElementById("questionContainer");
+        questionContainer.innerHTML = "";
+
+        if (category) {
+          var iframeContainer = document.createElement("div");
+          iframeContainer.classList.add("iframe-container");
+
+          var iframe = document.createElement("iframe");
+          iframe.src = getGoogleSheetURL(category);
+          iframe.frameborder = "0";
+
+          iframeContainer.appendChild(iframe);
+          questionContainer.appendChild(iframeContainer);
+        }
+      }
+
+      // Function to get the Google Sheet URL based on the selected category
+      function getGoogleSheetURL(category) {
+        var url = "";
+
+        switch (category) {
+          case "REACT":
+            url =
+              "https://script.google.com/macros/s/AKfycbwAe5Wq-IPvUCCjwSx3c3qkrvUvqhblegENoKgT-1xj5QtVtOiJrjOq6za4v_fdpqTy/exec";
+            break;
+          case "HTML":
+            url =
+              "https://script.google.com/macros/s/AKfycby165c8KLRmB-1GFKfH3JkNgrxakgmN_6bUgCoN1WaPH76Qp3FSCa1wxxSf_chLNh_p/exec";
+            break;
+          case "HR":
+            url =
+              "https://script.google.com/macros/s/AKfycbzY3FYp1Ue02oPIzOwYpPZM6cwzJfWI1hUQlLINki3eYZsdLITNkdlNZn9-O1JxYDEU/exec";
+            break;
+          case "JS":
+            url =
+              "https://script.google.com/macros/s/AKfycbxERO3GLaCJs1ejMcvQcu5vfVoybSjvBZUOU8Ay5op5IwCkCX4yaXpZtUFKj4ryllsB/exec";
+            break;
+          case "PYTHON":
+            url =
+              "https://script.google.com/macros/s/AKfycbzJCjLwDh-s5hy5TYwu6DzsBDal-p8AQUfNucojeLeih00BPV-9OKuRDNKD71uCD0RDNg/exec";
+            break;
+          case "DBMS":
+            url =
+              "https://script.google.com/macros/s/AKfycbxl3X1EYHtbHkhT5CXb4AVkrXFYsaTtfz1mGawK0K-PtET0BlQela0RVpXIZYlhWKyw/exec";
+            break;
+          case "SQL":
+            url =
+              "https://script.google.com/macros/s/AKfycbzhfh-Gg88TtloGKH2jpZ18hOxJIqGFVFXRgVNJ5-M2cHyhb7QLK7Inkz-5pWcNTWE/exec";
+            break;
+          case "OOPS":
+            url =
+              "https://script.google.com/macros/s/AKfycbych_rqPZQRrmPGvWXvHaGoWjgzNvdUPtasitSzswLWQhZqj7lY9b746i1hnxYRXZhNnQ/exec";
+            break;
+          case "C":
+            url =
+              "https://script.google.com/macros/s/AKfycbw326HKm7qUUb2tSC4NHC2WPf_Y8FnLqphXq6OoRq_ZLqeL2w6QJTdEsVVSrJQbXLY_BQ/exec";
+            break;
+          case "TIPS":
+            url =
+              "https://script.google.com/macros/s/AKfycbxtEkiwxfEbmA81gUo462y8DYa7wX84hTTOzo7jytevU1ZYOvVJ2-M20I9XNd9rcp8Z/exec";
+            break;
+          default:
+            break;
+        }
+
+        return url;
+      }
+    </script>
+  </body>
+</html>
+
